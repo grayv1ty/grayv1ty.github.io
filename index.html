@@ -119,7 +119,7 @@
   <body style="margin: 0px; overflow: hidden">
     <a-scene
       vr-mode-ui="enabled: false;"
-      renderer="logarithmicDepthBuffer: true;"
+      renderer="logarithmicDepthBuffer: true; precision: medium;"
       embedded
       arjs="patternRatio: 0.50; trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
     >
@@ -135,7 +135,7 @@
 
       <a-nft
         type="nft"
-        url="/nft/QR"
+        url="/nft/pinball"
         smooth="true"
         smoothCount="10"
         smoothTolerance=".01"
