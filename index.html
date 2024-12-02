@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: #dedede;
+      }
+
+      ul {
+        position: absolute;
+        bottom: 24px;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      ul li a {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        display: block;
+        text-align: center;
+        margin: 0 10px;
+        border-radius: 50%;
+        padding: 6px;
+        box-sizing: border-box;
+        text-decoration: none;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(0deg, #ddd, #fff);
+        transition: 0.5s;
+      }
+
+      ul li a:hover {
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        text-decoration: none;
+      }
+
+      ul li a .fab {
+        width: 100%;
+        height: 100%;
+        display: block;
+        background: linear-gradient(0deg, #fff, #ddd);
+        border-radius: 50%;
+        line-height: calc(60px - 12px);
+        font-size: 24px;
+        color: #262626;
+        transition: 0.5s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      ul li a .fab svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      ul li:nth-child(1) a:hover .fab {
+        color: #3b5998;
+      }
+
+      ul li:nth-child(2) a:hover .fab {
+        color: #00aced;
+      }
+
+      ul li:nth-child(3) a:hover .fab {
+        color: #dd4b39;
+      }
+
+      ul li:nth-child(4) a:hover .fab {
+        color: #007bb6;
+      }
+
+      ul li:nth-child(5) a:hover .fab {
+        color: #e4405f;
+      }
+
+      #scan-here {
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene
+      vr-mode-ui="enabled: false;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="patternRatio: 0.50; trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+    >
+      <a-assets>
+        <img id="student" src="/assets/student.jpg" />
+        <video
+          id="video"
+          autoplay
+          loop="true"
+          src="/assets/mov_bbb.mp4"
+        ></video>
+        <a-asset-item id="avatar" src="/assets/avatar.glb"></a-asset-item>
+      </a-assets>
+
+      <!-- <a-marker type="pattern" url="pattern-QR.patt"> -->
+      <a-marker preset="hiro">
+        <a-video
+          width="2"
+          height="2"
+          position="0 0.2 -2"
+          rotation="0 0 0"
+          src="#video"
+        ></a-video>
+        <a-gltf-model src="#avatar"></a-gltf-model>
+      </a-marker>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <div id="scan-here">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        width="48"
+        height="48"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z"
+        />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z"
+        />
+      </svg>
+      <h3>scan card</h3>
+    </div>
+
+    <nav id="footer" style="display: none">
+      <ul>
+        <li>
+          <a href="#">
+            <i class="fab fa-twitter" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <path
+                  d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"
+                />
+              </svg>
+            </i>
+          </a>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="fab fa-twitter" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="{1.5}"
+                stroke="currentColor"
+                className="size-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                />
+              </svg> </i
+          ></a>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="fab fa-google-plus-g" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+                />
+              </svg> </i
+          ></a>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="fab fa-linkedin" aria-hidden="true">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                /></svg></i
+          ></a>
+        </li>
+      </ul>
+    </nav>
+
+    <script>
+      console.log("Hellooo!");
+      window.addEventListener("load", () => {
+        const marker = document.querySelector("a-marker");
+        const footer = document.getElementById("footer");
+        const scan = document.getElementById("scan-here");
+
+        marker.addEventListener("markerFound", () => {
+          console.log("marker found");
+          footer.style.display = "block";
+          scan.style.display = "none";
+        });
+        marker.addEventListener("markerLost", () => {
+          console.log("marker Lost");
+          footer.style.display = "none";
+          scan.style.display = "flex";
+        });
+      });
+    </script>
+  </body>
+</html>
