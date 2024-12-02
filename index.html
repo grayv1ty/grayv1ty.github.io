@@ -133,15 +133,15 @@
         <a-asset-item id="avatar" src="/assets/avatar.glb"></a-asset-item>
       </a-assets>
 
-      <!-- <a-nft
-      type="nft"
-      url="/nft/QR"
-      smooth="true"
-      smoothCount="10"
-      smoothTolerance=".01"
-      smoothThreshold="5"
-    > -->
-      <a-marker type="pattern" url="/patterns/pattern-QR.patt">
+      <a-nft
+        type="nft"
+        url="/nft/QR"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      >
+        <!-- <a-marker type="pattern" url="/patterns/pattern-QR.patt"> -->
         <!-- <a-marker preset="hiro"> -->
         <a-video
           width="2"
@@ -151,7 +151,8 @@
           src="#video"
         ></a-video>
         <a-gltf-model src="#avatar"></a-gltf-model>
-      </a-marker>
+        <!-- </a-marker> -->
+      </a-nft>
 
       <a-entity camera></a-entity>
     </a-scene>
