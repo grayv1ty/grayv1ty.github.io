@@ -124,7 +124,6 @@
       arjs="patternRatio: 0.50; trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
     >
       <a-assets>
-        <img id="student" src="/assets/student.jpg" />
         <video
           id="video"
           autoplay
@@ -134,8 +133,16 @@
         <a-asset-item id="avatar" src="/assets/avatar.glb"></a-asset-item>
       </a-assets>
 
-      <!-- <a-marker type="pattern" url="pattern-QR.patt"> -->
-      <a-marker preset="hiro">
+      <!-- <a-nft
+      type="nft"
+      url="/nft/QR"
+      smooth="true"
+      smoothCount="10"
+      smoothTolerance=".01"
+      smoothThreshold="5"
+    > -->
+      <a-marker type="pattern" url="/patterns/pattern-QR.patt">
+        <!-- <a-marker preset="hiro"> -->
         <a-video
           width="2"
           height="2"
