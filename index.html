@@ -2,14 +2,14 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
-    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <title>Uguumur [AR]</title>
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
     <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
     <link rel="stylesheet" href="/css/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
@@ -134,16 +134,7 @@
         <a-asset-item id="avatar" src="/assets/avatar.glb"></a-asset-item>
       </a-assets>
 
-      <!-- <a-nft
-        type="nft"
-        url="/nft/QR"
-        smooth="true"
-        smoothCount="10"
-        smoothTolerance="0.01"
-        smoothThreshold="5"
-      > -->
       <a-marker type="pattern" url="/patterns/pattern-qrcode.patt">
-        <!-- <a-marker preset="hiro"> -->
         <a-video
           width="4.8"
           height="3"
@@ -153,7 +144,6 @@
         ></a-video>
         <a-gltf-model src="#avatar"></a-gltf-model>
       </a-marker>
-      <!-- </a-nft> -->
 
       <a-entity camera></a-entity>
     </a-scene>
@@ -185,7 +175,7 @@
     <nav id="footer" style="display: none">
       <ul>
         <li>
-          <a href="#">
+          <a href="https://www.linkedin.com/in/uguumurme/" target="_blank">
             <i class="fab fa-twitter" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path
@@ -196,26 +186,7 @@
           </a>
         </li>
         <li>
-          <a href="#"
-            ><i class="fab fa-twitter" aria-hidden="true">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="{1.5}"
-                stroke="currentColor"
-                className="size-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
-                />
-              </svg> </i
-          ></a>
-        </li>
-        <li>
-          <a href="#"
+          <a href="https://www.uguumur.me/" target="_blank"
             ><i class="fab fa-google-plus-g" aria-hidden="true">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -234,7 +205,9 @@
           ></a>
         </li>
         <li>
-          <a href="#"
+          <a
+            href="https://drive.google.com/file/d/1Kcd2YZH7jw9eHQolkmWOu8w5svwaTFn3/view"
+            target="_blank"
             ><i class="fab fa-linkedin" aria-hidden="true">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
