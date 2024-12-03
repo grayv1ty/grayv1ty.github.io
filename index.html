@@ -5,8 +5,8 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script> -->
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
     <link rel="stylesheet" href="/css/home.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -122,7 +122,7 @@
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true; precision: medium;"
       embedded
-      arjs="patternRatio: 0.50; trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+      arjs="patternRatio: 0.80; trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
     >
       <a-assets>
         <video
@@ -134,15 +134,15 @@
         <a-asset-item id="avatar" src="/assets/avatar.glb"></a-asset-item>
       </a-assets>
 
-      <a-nft
+      <!-- <a-nft
         type="nft"
-        url="/nft/pinball"
+        url="/nft/QR"
         smooth="true"
         smoothCount="10"
         smoothTolerance="0.01"
         smoothThreshold="5"
-      >
-        <!-- <a-marker type="pattern" url="/patterns/pattern-QR.patt"> -->
+      > -->
+      <a-marker type="pattern" url="/patterns/pattern-grayv1ty.patt">
         <!-- <a-marker preset="hiro"> -->
         <a-video
           width="2"
@@ -152,8 +152,8 @@
           src="#video"
         ></a-video>
         <a-gltf-model src="#avatar"></a-gltf-model>
-        <!-- </a-marker> -->
-      </a-nft>
+      </a-marker>
+      <!-- </a-nft> -->
 
       <a-entity camera></a-entity>
     </a-scene>
