@@ -3,126 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <title>Uguumur [AR]</title>
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-    <!-- <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
-    <link rel="stylesheet" href="/css/home.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- Font -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background: #dedede;
-      }
 
-      ul {
-        position: absolute;
-        bottom: 24px;
-        right: 0;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
+    <!-- AFrame -->
+    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@6.1.1/dist/aframe-extras.min.js"></script>
+    <!-- <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script> -->
 
-      ul li {
-        list-style: none;
-      }
-
-      ul li a {
-        position: relative;
-        width: 60px;
-        height: 60px;
-        display: block;
-        text-align: center;
-        margin: 0 10px;
-        border-radius: 50%;
-        padding: 6px;
-        box-sizing: border-box;
-        text-decoration: none;
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-        background: linear-gradient(0deg, #ddd, #fff);
-        transition: 0.5s;
-      }
-
-      ul li a:hover {
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        text-decoration: none;
-      }
-
-      ul li a .fab {
-        width: 100%;
-        height: 100%;
-        display: block;
-        background: linear-gradient(0deg, #fff, #ddd);
-        border-radius: 50%;
-        line-height: calc(60px - 12px);
-        font-size: 24px;
-        color: #262626;
-        transition: 0.5s;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      ul li a .fab svg {
-        width: 24px;
-        height: 24px;
-      }
-
-      ul li:nth-child(1) a:hover .fab {
-        color: #3b5998;
-      }
-
-      ul li:nth-child(2) a:hover .fab {
-        color: #00aced;
-      }
-
-      ul li:nth-child(3) a:hover .fab {
-        color: #dd4b39;
-      }
-
-      ul li:nth-child(4) a:hover .fab {
-        color: #007bb6;
-      }
-
-      ul li:nth-child(5) a:hover .fab {
-        color: #e4405f;
-      }
-
-      #scan-here {
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(255, 255, 255, 0.1);
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        font-optical-sizing: auto;
-        font-style: normal;
-      }
-    </style>
+    <!-- Locals -->
+    <link rel="stylesheet" href="/css/home.css" />
+    <script src="js/event.js"></script>
   </head>
   <body style="margin: 0px; overflow: hidden">
     <a-scene
+      id="scene"
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true; precision: medium;"
       embedded
-      arjs="patternRatio: 0.90; trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
+      arjs="patternRatio: 0.90; trackingMethod: best; debugUIEnabled: false;"
     >
       <a-assets>
         <video
@@ -134,26 +39,35 @@
           crossorigin="anonymous"
           src="/assets/portfolio.mp4"
         ></video>
-        <!-- <img
-          id="portfolio"
-          src="/assets/portfolio.gif"
-          alt="this slowpoke moves"
-        /> -->
         <a-asset-item id="avatar" src="/assets/avatar.glb"></a-asset-item>
       </a-assets>
 
-      <a-marker type="pattern" url="/patterns/pattern-qrcode.patt">
+      <a-marker id="marker" type="pattern" url="/patterns/pattern-qrcode.patt">
         <a-video
-          width="4.5"
-          height="2.25"
-          position="-1.2 0.2 -2"
+          width="6"
+          height="3"
+          position="-1 1 -3"
           rotation="0 0 0"
           src="#video"
         ></a-video>
-        <a-gltf-model src="#avatar"></a-gltf-model>
+
+        <a-entity
+          id="avatar"
+          position="0 0 0"
+          rotation="0 0 0"
+          gltf-model="/assets/avatar_animated.glb"
+          animation-mixer="clip: StandIdle;"
+          click-handler
+          class="clickable"
+        >
+        </a-entity>
       </a-marker>
 
-      <a-entity camera></a-entity>
+      <a-entity
+        camera
+        raycaster="objects: .clickable"
+        cursor="rayOrigin: mouse"
+      ></a-entity>
     </a-scene>
 
     <div id="scan-here">
@@ -234,25 +148,5 @@
         </li>
       </ul>
     </nav>
-
-    <script>
-      console.log("Hellooo!");
-      window.addEventListener("load", () => {
-        const marker = document.querySelector("a-marker");
-        const footer = document.getElementById("footer");
-        const scan = document.getElementById("scan-here");
-
-        marker.addEventListener("markerFound", () => {
-          console.log("marker found");
-          footer.style.display = "block";
-          scan.style.display = "none";
-        });
-        marker.addEventListener("markerLost", () => {
-          console.log("marker Lost");
-          footer.style.display = "none";
-          scan.style.display = "flex";
-        });
-      });
-    </script>
   </body>
 </html>
