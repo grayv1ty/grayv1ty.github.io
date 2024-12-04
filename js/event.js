@@ -3,10 +3,22 @@ window.addEventListener("load", () => {
   const footer = document.getElementById("footer");
   const scan = document.getElementById("scan-here");
 
+  let timeoutID;
+
   marker.addEventListener("markerFound", () => {
     console.log("marker found");
     footer.style.display = "block";
     scan.style.display = "none";
+
+    if (timeoutID) clearTimeout(timeoutID);
+
+    const textContainer = document.querySelector("#tap-text-container");
+
+    textContainer.setAttribute("visible", "true");
+
+    timeoutID = setTimeout(() => {
+      textContainer.setAttribute("visible", "false");
+    }, 5000);
   });
   marker.addEventListener("markerLost", () => {
     console.log("marker Lost");

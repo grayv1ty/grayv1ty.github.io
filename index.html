@@ -52,13 +52,21 @@
 
         <a-entity
           id="avatar"
-          position="0 0 0"
-          rotation="0 0 0"
           gltf-model="/assets/avatar.glb"
           animation-mixer="clip: StandIdle;"
           click-handler
           class="clickable"
+        ></a-entity>
+        <a-entity
+          id="tap-text-container"
+          material="color: black; opacity: 0.6; side: double;"
+          position="-1.4 2 0"
+          visible="false"
         >
+          <a-entity
+            text="value: Tap the screen and I might dance; align: center; color: #37ff8b; width: 2; wrapCount: 15;"
+            position="0 0 0"
+          ></a-entity>
         </a-entity>
       </a-marker>
 
