@@ -33,7 +33,7 @@ AFRAME.registerComponent("click-handler", {
 
     const animations = ["Dance3", "Waving", "Wave2", "Dance4", "Dance5"];
 
-    document.getElementsByTagName("canvas")[0].addEventListener("click", () => {
+    document.addEventListener("click", () => {
       const randomAnimation =
         animations[Math.floor(Math.random() * animations.length)];
 
