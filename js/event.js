@@ -1,7 +1,10 @@
+let animating = false;
+
 window.addEventListener("load", () => {
   const marker = document.querySelector("a-marker");
   const footer = document.getElementById("footer");
   const scan = document.getElementById("scan-here");
+  const textContainer = document.querySelector("#tap-text-container");
 
   let timeoutID;
 
@@ -12,9 +15,7 @@ window.addEventListener("load", () => {
 
     if (timeoutID) clearTimeout(timeoutID);
 
-    const textContainer = document.querySelector("#tap-text-container");
-
-    textContainer.setAttribute("visible", "true");
+    if (!animating) textContainer.setAttribute("visible", "true");
 
     timeoutID = setTimeout(() => {
       textContainer.setAttribute("visible", "false");
@@ -38,6 +39,8 @@ AFRAME.registerComponent("click-handler", {
       //   console.log(currentClip);
       if (currentClip !== "StandIdle") return;
 
+      animating = true;
+
       const randomAnimation =
         animations[Math.floor(Math.random() * animations.length)];
 
@@ -55,7 +58,8 @@ AFRAME.registerComponent("click-handler", {
     };
 
     el.addEventListener("animation-finished", (event) => {
-      console.log("Animation finished");
+      //   console.log("Animation finished");
+      animating = false;
       const finishedAnimation = event.detail.action._clip.name; // Name of the finished animation
 
       // Transition to "StandIdle" after "Dance3" or "Waving"
