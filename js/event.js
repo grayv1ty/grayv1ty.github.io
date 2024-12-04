@@ -6,7 +6,7 @@ window.addEventListener("load", () => {
   let timeoutID;
 
   marker.addEventListener("markerFound", () => {
-    console.log("marker found");
+    // console.log("marker found");
     footer.style.display = "block";
     scan.style.display = "none";
 
@@ -21,7 +21,7 @@ window.addEventListener("load", () => {
     }, 5000);
   });
   marker.addEventListener("markerLost", () => {
-    console.log("marker Lost");
+    // console.log("marker Lost");
     footer.style.display = "none";
     scan.style.display = "flex";
   });
