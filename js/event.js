@@ -33,17 +33,26 @@ AFRAME.registerComponent("click-handler", {
 
     const animations = ["Dance3", "Waving", "Wave2", "Dance4", "Dance5"];
 
-    document.addEventListener("click", () => {
+    const nextAnimation = () => {
+      const currentClip = el.getAttribute("animation-mixer")?.clip;
+      //   console.log(currentClip);
+      if (currentClip !== "StandIdle") return;
+
       const randomAnimation =
         animations[Math.floor(Math.random() * animations.length)];
 
       // Change the animation of the avatar
       el.setAttribute(
         "animation-mixer",
-        `clip: ${randomAnimation}; loop: once;`
+        `clip: ${randomAnimation}; loop: once; crossFadeDuration: 0.4;`
       );
       console.log(`Random animation selected: ${randomAnimation}`);
-    });
+    };
+
+    document.getElementById("body").onclick = () => {
+      //   console.log("Clicked");
+      nextAnimation();
+    };
 
     el.addEventListener("animation-finished", (event) => {
       console.log("Animation finished");
@@ -51,7 +60,10 @@ AFRAME.registerComponent("click-handler", {
 
       // Transition to "StandIdle" after "Dance3" or "Waving"
       if (animations.includes(finishedAnimation)) {
-        el.setAttribute("animation-mixer", "clip: StandIdle;");
+        el.setAttribute(
+          "animation-mixer",
+          "clip: StandIdle; crossFadeDuration: 0.4; loop: repeat;"
+        );
         console.log(`Animation transitioned to: StandIdle`);
       }
     });

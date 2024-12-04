@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="/css/home.css" />
     <script src="js/event.js"></script>
   </head>
-  <body style="margin: 0px; overflow: hidden">
+  <body id="body" style="margin: 0px; overflow: hidden">
     <a-scene
       vr-mode-ui="enabled: false;"
       renderer="logarithmicDepthBuffer: true; precision: medium;"
@@ -54,7 +54,6 @@
           gltf-model="/assets/avatar.glb"
           animation-mixer="clip: StandIdle;"
           click-handler
-          class="clickable"
         ></a-entity>
         <a-entity
           id="tap-text-container"
@@ -69,11 +68,7 @@
         </a-entity>
       </a-marker>
 
-      <a-entity
-        camera
-        raycaster="objects: .clickable"
-        cursor="rayOrigin: mouse"
-      ></a-entity>
+      <a-entity camera></a-entity>
     </a-scene>
 
     <div id="scan-here">
