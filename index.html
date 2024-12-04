@@ -57,12 +57,21 @@
         ></a-entity>
         <a-entity
           id="tap-text-container"
-          material="color: black; opacity: 0.6; side: double;"
-          position="-1.4 2 0"
+          position="-0.8 2 0"
           visible="false"
+          scale="0.5 0.5 0.5"
         >
+          <!-- Background plane with material properties -->
+          <a-plane
+            material="color: black; opacity: 0.6; side: double;"
+            width="2"
+            height="1"
+            position="0 0 0"
+          ></a-plane>
+
+          <!-- Text inside the plane -->
           <a-entity
-            text="value: Tap the screen and I might dance; align: center; color: #37ff8b; width: 2; wrapCount: 15;"
+            text="value: Tap the screen, I might dance; align: center; color: #37ff8b; width: 2; wrapCount: 15;"
             position="0 0 0"
           ></a-entity>
         </a-entity>
